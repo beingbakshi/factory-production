@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/mumuksh_production_report (13).html"
-    }
-  ]
-}
