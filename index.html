@@ -666,7 +666,7 @@ textarea{resize:vertical;min-height:58px;}
           <div class="f"><label>White Poly</label><input type="text" id="HR_WPOLY" placeholder="&#x2014;" inputmode="decimal"></div>
           <div class="f"><label>Cor in nos</label><input type="text" id="HR_CORNOS" placeholder="&#x2014;" inputmode="decimal"></div>
           <div class="f"><label>PE</label><input type="text" id="Pkg_PE" placeholder="&#x2014;" inputmode="decimal"></div>
-          <div class="f"><label>Pulf</label><input type="text" id="HR_PULF" placeholder="&#x2014;" inputmode="decimal"></div>
+          <div class="f"><label>Pulp</label><input type="text" id="HR_Pulp" placeholder="&#x2014;" inputmode="decimal"></div>
           <div class="f"><label>Cartoon</label><input type="text" id="HR_CARTOON" placeholder="&#x2014;" inputmode="decimal"></div>
           <div class="f"><label>Plan Gutta</label><input type="text" id="HR_PGUTTA" placeholder="&#x2014;" inputmode="decimal"></div>
           <div class="f"><label>Sealing Cut</label><input type="text" id="HR_SEALCUT" placeholder="&#x2014;" inputmode="decimal"></div>
@@ -1063,7 +1063,7 @@ function getDtRows(){
   return rows;
 }
 
-var SKU_FIELDS=[{k:'pulfWt',l:'Pulf WT'},{k:'pulfRat',l:'Pulp Ratio'},{k:'sapWt',l:'Sap WT'},{k:'sapRat',l:'Sap Ratio'},{k:'tpc',l:'TPC',calc:false},{k:'bGrade',l:'B Grade'},{k:'cGrade',l:'C Grade'},{k:'gpc',l:'GPC ⚡',ro:true},{k:'tRej',l:'T. Rej. ⚡',ro:true},{k:'rejPct',l:'Rej % ⚡',ro:true}];
+var SKU_FIELDS=[{k:'PulpWt',l:'Pulp WT'},{k:'PulpRat',l:'Pulp Ratio'},{k:'sapWt',l:'Sap WT'},{k:'sapRat',l:'Sap Ratio'},{k:'tpc',l:'TPC',calc:false},{k:'bGrade',l:'B Grade'},{k:'cGrade',l:'C Grade'},{k:'gpc',l:'GPC ⚡',ro:true},{k:'tRej',l:'T. Rej. ⚡',ro:true},{k:'rejPct',l:'Rej % ⚡',ro:true}];
 
 function effToNum(v){
   if(v===null||v===undefined) return NaN;
@@ -1199,7 +1199,7 @@ function getHRData(){
     var tot=(document.getElementById('RM_TOT'+i)||{}).textContent||'';
     if(nm&&(op||rec||cl||con))rmData.push({rm:nm,uom:uom,opening:op,receive:rec,total:tot,closing:cl,consumed:con,supplier:sup});
   });
-  return{brand:gv('HR_BRAND'),configure:gv('HR_CONF'),bag:gv('HR_BAG'),noPic:gv('HR_NOPIC'),holdRemark:gv('HR_REMARK'),bGrade:gv('HR_BGRADE'),cGrade:gv('HR_CGRADE'),unselved:gv('HR_UNSELVED'),remarks:gv('HR_REMARKS'),nw:gv('HR_NW'),whitePoly:gv('HR_WPOLY'),corNos:gv('HR_CORNOS'),pe:gv('HR_PE'),pulf:gv('HR_PULF'),cartoon:gv('HR_CARTOON'),planGutta:gv('HR_PGUTTA'),sealCut:gv('HR_SEALCUT'),op:gv('HR_OP'),qly:gv('HR_QLY'),production:gv('HR_PROD'),storeVerify:gv('HR_STORE'),rmData:rmData};
+  return{brand:gv('HR_BRAND'),configure:gv('HR_CONF'),bag:gv('HR_BAG'),noPic:gv('HR_NOPIC'),holdRemark:gv('HR_REMARK'),bGrade:gv('HR_BGRADE'),cGrade:gv('HR_CGRADE'),unselved:gv('HR_UNSELVED'),remarks:gv('HR_REMARKS'),nw:gv('HR_NW'),whitePoly:gv('HR_WPOLY'),corNos:gv('HR_CORNOS'),pe:gv('HR_PE'),Pulp:gv('HR_Pulp'),cartoon:gv('HR_CARTOON'),planGutta:gv('HR_PGUTTA'),sealCut:gv('HR_SEALCUT'),op:gv('HR_OP'),qly:gv('HR_QLY'),production:gv('HR_PROD'),storeVerify:gv('HR_STORE'),rmData:rmData};
 }
 
 function buildSummary(){
@@ -1226,8 +1226,8 @@ function doPrint(){
   }).join('');
 
   // SKU rows
-  var sk = ['name','pulfWt','pulfRat','sapWt','sapRat','tpc','bGrade','cGrade','gpc','tRej','rejPct'];
-  var sl = ['SKU Name','Pulf WT','Pulp Ratio','Sap WT','Sap Ratio','TPC','B Grd','C Grd','GPC','T.Rej','Rej%'];
+  var sk = ['name','PulpWt','PulpRat','sapWt','sapRat','tpc','bGrade','cGrade','gpc','tRej','rejPct'];
+  var sl = ['SKU Name','Pulp WT','Pulp Ratio','Sap WT','Sap Ratio','TPC','B Grd','C Grd','GPC','T.Rej','Rej%'];
   var totTpc=0,totBg=0,totCg=0,totGpc=0,totTrej=0;
   d.skus.forEach(function(s){
     totTpc  += parseFloat(s.tpc)||0;
@@ -1347,7 +1347,7 @@ function doPrint(){
   + '<table style="width:100%;border-collapse:collapse;font-size:7px">'
   + '<tr><td class="c1">Non Woven</td><td class="cv">'+(hr.nw||'—')+'</td><td class="c1">White Poly</td><td class="cv">'+(hr.whitePoly||'—')+'</td>'
   +    '<td class="c1">Core Nos</td><td class="cv">'+(hr.corNos||'—')+'</td><td class="c1">PE</td><td class="cv">'+(hr.pe||'—')+'</td></tr>'
-  + '<tr><td class="c1">Pulf</td><td class="cv">'+(hr.pulf||'—')+'</td><td class="c1">Cartoon</td><td class="cv">'+(hr.cartoon||'—')+'</td>'
+  + '<tr><td class="c1">Pulp</td><td class="cv">'+(hr.Pulp||'—')+'</td><td class="c1">Cartoon</td><td class="cv">'+(hr.cartoon||'—')+'</td>'
   +    '<td class="c1">Plan Gutta</td><td class="cv">'+(hr.planGutta||'—')+'</td><td class="c1">Seal Cut</td><td class="cv">'+(hr.sealCut||'—')+'</td></tr>'
   + '</table></td></tr></table>'
 
@@ -1418,7 +1418,7 @@ function doSaveExcel(){
   try{records=JSON.parse(localStorage.getItem(STORE_KEY)||'[]');}catch(e){records=[];}
   var flat={};
   d.skus.forEach(function(s,i){
-    flat['SKU'+(i+1)+'_Name']=s.name;flat['SKU'+(i+1)+'_PulfWT']=s.pulfWt;flat['SKU'+(i+1)+'_PulfRat']=s.pulfRat;
+    flat['SKU'+(i+1)+'_Name']=s.name;flat['SKU'+(i+1)+'_PulpWT']=s.PulpWt;flat['SKU'+(i+1)+'_PulpRat']=s.PulpRat;
     flat['SKU'+(i+1)+'_SapWT']=s.sapWt;flat['SKU'+(i+1)+'_SapRat']=s.sapRat;flat['SKU'+(i+1)+'_TPC']=s.tpc;
     flat['SKU'+(i+1)+'_GPC']=s.gpc;flat['SKU'+(i+1)+'_BGrade']=s.bGrade;flat['SKU'+(i+1)+'_CGrade']=s.cGrade;
     flat['SKU'+(i+1)+'_TRej']=s.tRej;flat['SKU'+(i+1)+'_RejPct']=s.rejPct;
@@ -1426,7 +1426,7 @@ function doSaveExcel(){
   var dtStr=d.dtRows.map(function(r){return r.from+'-'+r.to+'('+r.min+'min):'+r.reason;}).join(' | ');
   var rmFlat={};
   hr.rmData.forEach(function(r){var k=r.rm.replace(/[^a-zA-Z0-9]/g,'_');rmFlat['RM_'+k+'_Opening']=r.opening;rmFlat['RM_'+k+'_Receive']=r.receive;rmFlat['RM_'+k+'_Total']=r.total;rmFlat['RM_'+k+'_Closing']=r.closing;rmFlat['RM_'+k+'_Consumed']=r.consumed;});
-  var rec=Object.assign({'Date':d.date,'Shift':d.shift,'M/C':d.mc,'Line':d.line,'Size':d.size,'M/C Speed':d.mcSpeed,'AVG Speed':d.avgSpeed,'Use Time':d.useTime,'Run Time':d.runTime,'D/Time':d.dTime,'EFF%':d.eff,'KWH Opening':d.kwhOp,'KWH Closing':d.kwhCl,'KWH Diff':d.kwhDiff,'Count Start':d.cntStart,'Count End':d.cntEnd,'Count Diff':d.cntDiff,'Operator':d.operator,'ASS Operator':d.assOp,'RM OP 1':d.rmOp1,'RM OP 2':d.rmOp2,'Line Checker':d.lChecker,'Total Downtime':d.dtTotal,'Downtime Detail':dtStr,'Handover':d.handover,'CA/Dai':d.caDai,'EA/Dai':d.eaDai,'WL/Dai':d.wlDai,'Hold Brand':hr.brand,'Hold Configure':hr.configure,'Hold Bag Count':hr.bag,'Hold Pieces':hr.noPic,'Hold Remark':hr.holdRemark,'Quality B Grade':hr.bGrade,'Quality C Grade':hr.cGrade,'Quality Unfiltered':hr.unselved,'Quality Remarks':hr.remarks,'Pkg Non Woven':hr.nw,'Pkg White Poly':hr.whitePoly,'Pkg Core':hr.corNos,'Pkg PE':hr.pe,'Pkg Pulf':hr.pulf,'Pkg Cartoon':hr.cartoon,'Pkg Plan Gutta':hr.planGutta,'Pkg Sealing Cut':hr.sealCut,'Verify Operator':hr.op,'Verify Quality':hr.qly,'Verify Production':hr.production,'Verify Store':hr.storeVerify,'Submitted By':d.submittedBy,'Submitted At':d.submittedAt},flat,rmFlat);
+  var rec=Object.assign({'Date':d.date,'Shift':d.shift,'M/C':d.mc,'Line':d.line,'Size':d.size,'M/C Speed':d.mcSpeed,'AVG Speed':d.avgSpeed,'Use Time':d.useTime,'Run Time':d.runTime,'D/Time':d.dTime,'EFF%':d.eff,'KWH Opening':d.kwhOp,'KWH Closing':d.kwhCl,'KWH Diff':d.kwhDiff,'Count Start':d.cntStart,'Count End':d.cntEnd,'Count Diff':d.cntDiff,'Operator':d.operator,'ASS Operator':d.assOp,'RM OP 1':d.rmOp1,'RM OP 2':d.rmOp2,'Line Checker':d.lChecker,'Total Downtime':d.dtTotal,'Downtime Detail':dtStr,'Handover':d.handover,'CA/Dai':d.caDai,'EA/Dai':d.eaDai,'WL/Dai':d.wlDai,'Hold Brand':hr.brand,'Hold Configure':hr.configure,'Hold Bag Count':hr.bag,'Hold Pieces':hr.noPic,'Hold Remark':hr.holdRemark,'Quality B Grade':hr.bGrade,'Quality C Grade':hr.cGrade,'Quality Unfiltered':hr.unselved,'Quality Remarks':hr.remarks,'Pkg Non Woven':hr.nw,'Pkg White Poly':hr.whitePoly,'Pkg Core':hr.corNos,'Pkg PE':hr.pe,'Pkg Pulp':hr.Pulp,'Pkg Cartoon':hr.cartoon,'Pkg Plan Gutta':hr.planGutta,'Pkg Sealing Cut':hr.sealCut,'Verify Operator':hr.op,'Verify Quality':hr.qly,'Verify Production':hr.production,'Verify Store':hr.storeVerify,'Submitted By':d.submittedBy,'Submitted At':d.submittedAt},flat,rmFlat);
   records.push(rec);
   try{
     localStorage.setItem(STORE_KEY,JSON.stringify(records));
@@ -2177,8 +2177,8 @@ function buildDailyPDF(dateLabel,reports,downtime,skus,rm){
   var avgEff=effArr.length>0?(effArr.reduce(function(s,v){return s+v;},0)/effArr.length).toFixed(1)+'%':'—';
   var avgEffNum=effArr.length>0?(effArr.reduce(function(s,v){return s+v;},0)/effArr.length).toFixed(1):0;
 
-  var skuF=['SKU_Name','Pulf_WT','Pulf_Rat','Sap_WT','Sap_Rat','TPC','B_Grade','C_Grade','GPC','T_Rej','Rej_Percent'];
-  var skuL=['SKU Name','Pulf WT','Pulp Ratio','Sap WT','Sap Ratio','TPC','B Grade','C Grade','GPC','T. Rej','Rej %'];
+  var skuF=['SKU_Name','Pulp_WT','Pulp_Rat','Sap_WT','Sap_Rat','TPC','B_Grade','C_Grade','GPC','T_Rej','Rej_Percent'];
+  var skuL=['SKU Name','Pulp WT','Pulp Ratio','Sap WT','Sap Ratio','TPC','B Grade','C Grade','GPC','T. Rej','Rej %'];
   var totMap2={TPC:1,B_Grade:1,C_Grade:1,GPC:1,T_Rej:1,Rej_Percent:1};
 
   var css='<style>'
@@ -2397,7 +2397,7 @@ function buildDailyPDF(dateLabel,reports,downtime,skus,rm){
       +'<td class="lb">W.Poly</td><td class="v">'+(rep['Pkg_White_Poly']||'—')+'</td></tr>'
       +'<tr><td class="lb">Core</td><td class="v">'+(rep['Pkg_Core']||'—')+'</td>'
       +'<td class="lb">PE</td><td class="v">'+(rep['Pkg_PE']||'—')+'</td></tr>'
-      +'<tr><td class="lb">Pulf</td><td class="v">'+(rep['Pkg_Pulf']||'—')+'</td>'
+      +'<tr><td class="lb">Pulp</td><td class="v">'+(rep['Pkg_Pulp']||'—')+'</td>'
       +'<td class="lb">Cartoon</td><td class="v">'+(rep['Pkg_Cartoon']||'—')+'</td></tr>'
       +'<tr><td class="lb">Pl.Gutta</td><td class="v">'+(rep['Pkg_Plan_Gutta']||'—')+'</td>'
       +'<td class="lb">SealCut</td><td class="v">'+(rep['Pkg_Sealing_Cut']||'—')+'</td></tr>'
