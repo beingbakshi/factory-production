@@ -662,7 +662,7 @@ textarea{resize:vertical;min-height:58px;}
       <div class="card">
         <div class="ctitle">&#x1F4E6; Packaging Details</div>
         <div class="g2">
-          <div class="f"><label>N.W</label><input type="text" id="Pkg_Non_Woven" placeholder="&#x2014;" inputmode="decimal"></div>
+          <div class="f"><label>N/W</label><input type="text" id="Pkg_Non_Woven" placeholder="&#x2014;" inputmode="decimal"></div>
           <div class="f"><label>White Poly</label><input type="text" id="HR_WPOLY" placeholder="&#x2014;" inputmode="decimal"></div>
           <div class="f"><label>Cor in nos</label><input type="text" id="HR_CORNOS" placeholder="&#x2014;" inputmode="decimal"></div>
           <div class="f"><label>PE</label><input type="text" id="Pkg_PE" placeholder="&#x2014;" inputmode="decimal"></div>
@@ -1393,7 +1393,7 @@ function doPrint(){
   +    '<td class="c1">KWH Diff</td><td class="cv">'+(d.kwhDiff||'—')+'</td><td class="c1">Cnt St→En</td><td class="cv">'+(d.cntStart||'—')+'→'+(d.cntEnd||'—')+'</td></tr>'
   + '<tr><td class="c1">Operator</td><td class="cv">'+(d.operator||'—')+'</td><td class="c1">Asst Op</td><td class="cv">'+(d.assOp||'—')+'</td>'
   +    '<td class="c1">RM Op 1</td><td class="cv">'+(d.rmOp1||'—')+'</td><td class="c1">RM Op 2</td><td class="cv">'+(d.rmOp2||'—')+'</td></tr>'
-  + '<tr><td class="c1">Line Chkr</td><td class="cv" colspan="3">'+(d.lChecker||'—')+'</td>'
+  + '<tr><td class="c1">Line Checker</td><td class="cv" colspan="3">'+(d.lChecker||'—')+'</td>'
   +    '<td class="c1">Submitted</td><td class="cv" colspan="3">'+(d.submittedBy||'—')+'</td></tr>'
   + '</table></td>'
 
@@ -2473,7 +2473,7 @@ function buildShiftPDF(dateLabel,shiftLabel,reports,downtime,skus,rm){
     +'<td class="lb">Count Diff</td><td class="v">'+(rep['Count_Diff']||'—')+'</td>'
     +'</tr><tr>'
     +'<td class="lb">Asst. Op</td><td class="v">'+(rep['ASS_Operator']||'—')+'</td>'
-    +'<td class="lb">Line Chkr</td><td class="v">'+(rep['Line_Checker']||'—')+'</td>'
+    +'<td class="lb">Line Checker</td><td class="v">'+(rep['Line_Checker']||'—')+'</td>'
     +'</tr><tr>'
     +'<td class="lb">RM Op 1</td><td class="v">'+(rep['RM_Operator_1']||'—')+'</td>'
     +'<td class="lb">RM Op 2</td><td class="v">'+(rep['RM_Operator_2']||'—')+'</td>'
